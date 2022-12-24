@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/App.css';
 const App = () => {
-
-  const handleClick = (event) =>{
-    // use console.log
-    console.log(`Button id is:-${event.target.id}`);
-
+let [data, SetData] = useState({
+  text:'',
+  num:''
+})
+  const handleInput = (event) =>{
+    {
+   // use console.log
+    SetData({
+    ...data,
+      [e.target.name]:e.target.value
+    })
   }
-
-  // do not remove the two buttons or change their id
+    console.log(data);
+  }
+  // do not change id of input elements
   return (
     <div id="main">
-      <button id="button-a" onClick={handleClick}>Button A</button>
-      <button id="button-b" onClick={handleClick}>Button B</button>
+      <label htmlFor='text-input'>Text Input:- </label>
+      <input name="text" onChange={handleInput} id="text-input" type={'text'} />
+
+      <br/>
+      <br/>
+
+      <label htmlFor='num-input'>Number input</label>
+      <input name="num" onChange={handleInput} id="num-input"  type={'number'} />
+      <br/>
     </div>
   )
 }
